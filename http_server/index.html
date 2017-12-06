@@ -11,10 +11,28 @@
 </head>
 
 <body>
-<div style="float: left; text-align: center;width: 50vw;">
-  <p>GPIO 1</p> <input onclick="gpioPin1(this)" style="background-color: #000000; font-size: 1000%; color: #FFFFFF; padding: 10px; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; margin:10px" value="HI" type="button">
-</div>
- <div style="    float: right; margin-left: 50vw; width: 50vw; position: absolute; text-align: center;">
+<div><div style="text-align: center"> pin 3 Pwm
+  <div id="slidecontainer" style="width:50%; margin: 10px 10px 10px 10px; margin-left: 25vw">
+    <input type="range" min="1" max="1023" value="512" class="slider" id="pwmRangeSlider" >
+      <p>PwmValue: <span id="pwmSliderValue"></span></p>
+  </div>
+  
+ <div>
+    <div style="float: left; text-align: center;width: 50vw;">
+      <p>GPIO 1</p> <input onclick="gpioPin1(this)" style="background-color: #000000; font-size: 1000%; color: #FFFFFF; padding: 10px; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; margin:10px" value="HI" type="button">
+      
+      <p>GPIO 5</p><input onclick="gpioPin5(this)" type="button" style="background-color: #000000;
+    font-size: 1000%;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin:10px" value="       " >
+
+    </div>
+    
+ <div style="float: right; margin-left: 50vw; width: 50vw; position: absolute; text-align: center;">
   <p>GPIO 2</p><input onclick="gpioPin2(this)" type="button" style="background-color: #000000;
     font-size: 1000%;
     color: #FFFFFF;
@@ -24,14 +42,20 @@
     -webkit-border-radius: 10px;
     margin:10px" value="       " >
     
-    
-     <div> pin 3 Pwm
-  <div id="slidecontainer" style="width:50%; margin: 10px 10px 10px 10px;">
-    <input type="range" min="1" max="1023" value="512" class="slider" id="pwmRangeSlider" >
-      <p>PwmValue: <span id="pwmSliderValue"></span></p>
-  </div>
-     </div>
+    <p>GPIO 6</p><input onclick="gpioPin6(this)" type="button" style="background-color: #000000;
+    font-size: 1000%;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin:10px" value="       " > 
+     
  </div>
+</div>
+ 
+  
+     </div>
   <script>
 
   var slider = document.getElementById("pwmRangeSlider");
@@ -68,7 +92,12 @@
     function gpioPin2(box) {
       postGpioWrite(2, box.checked);
     }
-
+    function gpioPin5(box) {
+      postGpioWrite(5, box.checked);
+    }
+    function gpioPin6(box) {
+      postGpioWrite(6, box.checked);
+    }
     function queryAdc0() {
       var url = "adc?pin=0";
       var xhr = new XMLHttpRequest();
